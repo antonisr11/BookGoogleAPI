@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport">
+    <title>Show Book</title>
+    <link rel="stylesheet" th:href="@{~/assets/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{~/assets/fonts/typicons.min.css}">
+    <link rel="stylesheet" th:href="@{~/assets/css/styles.min.css}">
+
+
+    <style>
+        body{
+            background: #85B3D1 !important;
+            color: #2460A7;
+        }
+
+        h1 strong span {
+            color: #2460A7 !important;
+        }
+
+        pre{
+            background-color: #2460A7 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 onclick="location.href='/'" style="padding-top: 10px;padding-bottom: 10px;"><strong><span>Book Google API</span></strong>
+            </h1>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<pre style="
+      padding: 10px;
+      border-radius: 5px;" th:text="${bookVolumeJSON}"></pre>
+
+<br>
+<script th:src="@{~/assets/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{~/assets/js/script.min.js}"></script>
+</body>
+
+</html>

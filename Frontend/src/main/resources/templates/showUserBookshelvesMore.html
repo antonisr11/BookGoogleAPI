@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport">
+    <title>Show More on User's Bookshelves</title>
+    <link rel="stylesheet" th:href="@{~/assets/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{~/assets/fonts/typicons.min.css}">
+    <link rel="stylesheet" th:href="@{~/assets/css/styles.min.css}">
+
+
+    <style>
+        body{
+            background: #85B3D1 !important;
+            color: #2460A7;
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 5px #D9B48F !important;
+            border: 1px solid #D9B48F !important;
+        }
+
+        input{
+            background-color: #DAE8F1 !important;
+            color: #2460A7 !important;
+        }
+
+        button{
+            background-color: #D9B48F !important;
+            color: #2460A7 !important;
+        }
+
+        h1 strong span {
+            color: #2460A7 !important;
+        }
+
+        form button{
+            background-color: #D9B48F !important;
+            color: #2460A7 !important;
+        }
+
+        .card, .card h4, .card h6, .card span{
+            background-color: #2460A7 !important;
+            color: #D9B48F !important;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center"><h1 onclick="location.href='/'" style="padding-top: 10px;padding-bottom: 10px;">
+            <strong><span>Book Google API</span></strong></h1></div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <br>
+        <br>
+        <br>
+        <div class="card" style="margin-top: 10px;">
+            <div class="card-body"
+                 th:attr="onclick=|location.href='http://localhost:8080/showUserBookshelvesMoreVolumes/${userId}/${item.getId()}';|">
+                <h4 class="text-center card-title"><span
+                        th:text="${item.getTitle() + '(' + item.getId() + ')'}"></span><br>
+                </h4><h6 class="card-subtitle mb-2"><span th:text="${item.getAccess()}"></span></h6>
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <td style="width: 25%;">Created</td>
+                            <td style="text-align: right"
+                                th:text="${item.getCreated().substring(0,10) + ' ' + item.getCreated().substring(11,19)}"></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 25%;">Updated</td>
+                            <td style="text-align: right"
+                                th:text="${item.getUpdated().substring(0,10) + ' ' + item.getUpdated().substring(11,19)}"></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 25%;">Volumes Last Updated</td>
+                            <td style="text-align: right"
+                                th:text="${item.getVolumesLastUpdated().substring(0,10) + ' ' + item.getVolumesLastUpdated().substring(11,19)}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h6 class="text-end mb-2"><span th:text="${item.getVolumeCount() + ' Volumes'}"></span>
+                </h6></div>
+        </div>
+    </div>
+</div>
+<script th:src="@{~/assets/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{~/assets/js/script.min.js}"></script>
+</body>
+</html>

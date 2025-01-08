@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport">
+    <title>Search by User ID</title>
+    <link rel="stylesheet" th:href="@{~/assets/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{~/assets/fonts/typicons.min.css}">
+    <link rel="stylesheet" th:href="@{~/assets/css/styles.min.css}">
+
+    <style>
+        body{
+            background: #85B3D1 !important;
+            color: #2460A7;
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 5px #D9B48F !important;
+            border: 1px solid #D9B48F !important;
+        }
+
+        input{
+            background-color: #DAE8F1 !important;
+            color: #2460A7 !important;
+        }
+
+        button{
+            background-color: #D9B48F !important;
+            color: #2460A7 !important;
+        }
+
+        h1 strong span {
+            color: #2460A7 !important;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center"><h1 onclick="location.href='..'"
+                                            style="padding-top: 10px;padding-bottom: 10px;"><strong><span>Book Google API</span></strong></h1></div>
+    </div>
+</div>
+<br>
+<div class="row" style="margin-bottom: 50px;">
+    <div class="col-4 d-flex justify-content-center align-items-center">
+        <button class="btn" onclick="location.href='/searchByFields'" type="button">Search Books by fields
+        </button>
+    </div>
+    <div class="col-4 d-flex justify-content-center align-items-center">
+        <button class="btn" onclick="location.href='/searchByUserID'" type="button">Search Books by User
+            ID
+        </button>
+    </div>
+    <div class="col-4 d-flex justify-content-center align-items-center">
+        <button class="btn" onclick="location.href='/showHistory'" type="button">Show User's Search
+            History
+        </button>
+    </div>
+</div>
+<form action="/searchByUserID/commit"
+      class="d-flex flex-column align-items-center align-items-start" method="GET"
+      style="border-radius: 50px;">
+    <div class="d-flex flex-column justify-content-center align-items-center"
+         style="width: 100%;margin-top: 25px;margin-bottom: 25px;"><label
+            class="form-label d-flex flex-column justify-content-center align-items-center"
+            style="width: 100%;margin-bottom: 50px;">User ID<input class="form-control"
+                                                                   name="userId"
+                                                                   style="margin: 0;width: 50%;border-radius: 30px;" type="text"></label>
+        <button class="btn" type="submit">Search</button>
+    </div>
+</form>
+<br>
+<script th:src="@{~/assets/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{~/assets/js/script.min.js}"></script>
+</body>
+</html>

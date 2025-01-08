@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport">
+    <title>Show Books</title>
+    <link rel="stylesheet" th:href="@{~/assets/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{~/assets/fonts/typicons.min.css}">
+    <link rel="stylesheet" th:href="@{~/assets/css/styles.min.css}">
+
+
+    <style>
+        body {
+            background: #85B3D1 !important;
+            color: #2460A7;
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 5px #D9B48F !important;
+            border: 1px solid #D9B48F !important;
+        }
+
+        input {
+            background-color: #DAE8F1 !important;
+            color: #2460A7 !important;
+        }
+
+        button {
+            background-color: #D9B48F !important;
+            color: #2460A7 !important;
+        }
+
+        h1 strong span {
+            color: #2460A7 !important;
+        }
+
+        form button {
+            background-color: #D9B48F !important;
+            color: #2460A7 !important;
+        }
+
+        .card, .card h4, .card h6, .card span {
+            background-color: #2460A7 !important;
+            color: #D9B48F !important;
+        }
+
+        .card-text {
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center"><h1 onclick="location.href='/'" style="padding-top: 10px;padding-bottom: 10px;">
+            <strong><span
+                    style="color: rgb(231, 212, 192);">Book Google API</span></strong></h1></div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <th:block th:each="i: ${#numbers.sequence(0, itemList.size()-1)}" th:if="${itemList.size() > 0}">
+            <div class="card" style="margin-top: 10px;">
+                <div class="card-body"
+                     th:attr="onclick=|location.href='http://localhost:8080/showBook/${itemList.get(i).getId()}';|">
+                    <h4 class="text-center card-title"><span
+                            th:text="${itemList.get(i).getVolumeInfo().getTitle()}"></span><br>
+                    </h4><h6 class="text-muted card-subtitle mb-2"><span
+                        th:text="${itemList.get(i).getVolumeInfo().getAuthors()}"></span>
+                </h6>
+                    <h6 class="text-end text-muted card-subtitle mb-2"><span
+                            th:if="${itemList.get(i).getVolumeInfo().getPublisher() != null}"
+                            th:text="${itemList.get(i).getVolumeInfo().getPublisher() + ' (' + itemList.get(i).getVolumeInfo().getPublishedDate()} + ')'"></span>
+                        <br>
+                    </h6>
+
+                    <h6 class="text-end text-muted card-subtitle mb-2"><span
+                            th:if="${itemList.get(i).getVolumeInfo().getPublisher() == null}"
+                            th:text="${'(' + itemList.get(i).getVolumeInfo().getPublishedDate()} + ')'"></span>
+                        <br>
+                    </h6>
+
+                    <p class="card-text" th:text="${itemList.get(i).getVolumeInfo().getDescription()}"></p><h6
+                        class="text-end text-muted card-subtitle mb-2">
+                    <span th:text="${itemList.get(i).getVolumeInfo().getPageCount() + ' Pages'}"></span><br>
+                </h6></div>
+            </div>
+        </th:block>
+    </div>
+</div>
+<script th:src="@{~/assets/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{~/assets/js/script.min.js}"></script>
+</body>
+</html>
